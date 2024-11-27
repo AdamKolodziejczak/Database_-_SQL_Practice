@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+ Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="1.1.5" use-changelog="false" max-obj-count="13"
+	 last-position="0,0" last-zoom="0.65" scene-rect="-100,0,1840.49,1170.32"
+	 default-schema="public" default-owner="postgres"
+	 layers="Default layer"
+	 active-layers="0"
+	 layer-name-colors="#000000"
+	 layer-rect-colors="#b4b4b4"
+	 show-layer-names="false" show-layer-rects="false">
+<database name="new_database" is-template="false" allow-conns="true">
+</database>
+
+<schema name="public" layers="0" fill-color="#e1e1e1" name-color="#000000" sql-disabled="true">
+</schema>
+
+<table name="Manufacturer" layers="0" collapse-mode="2" pagination="true" attribs-page="0" ext-attribs-page="0" max-obj-count="8" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="40" y="20"/>
+	<column name="shortName">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="officialName" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="country">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="foundedYear">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="stockPrice">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="customerServicePhoneNumber">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="Manufacturer_pk" type="pk-constr" table="public.&quot;Manufacturer&quot;">
+		<columns names="officialName" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="person" layers="0" collapse-mode="2" max-obj-count="7" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="-60" y="820"/>
+	<column name="firstName">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="lastName">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="cellPhone">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="emailAddress">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="SIN">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="perosnID" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="person_pk" type="pk-constr" table="public.person">
+		<columns names="perosnID" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="carModel" layers="0" collapse-mode="2" max-obj-count="10" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="760" y="20"/>
+	<column name="modelName" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="safetyRating">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fuelConsumption">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="yearPublic">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="horsePower">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="countryOfAssembly">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="designer">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="carModel_pk" type="pk-constr" table="public.&quot;carModel&quot;">
+		<columns names="modelName" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="modelID_vehicleCategory" index="8"/>
+		<object name="officialName_Manufacturer" index="7"/>
+	</customidxs>
+	<customidxs object-type="constraint">
+		<object name="Manufacturer_fk" index="1"/>
+		<object name="vehicleCategory_fk" index="2"/>
+	</customidxs></table>
+
+<table name="vehicleCategory" layers="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1420" y="60"/>
+	<column name="description">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="category">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="modelID" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="vehicleCategory_pk" type="pk-constr" table="public.&quot;vehicleCategory&quot;">
+		<columns names="modelID" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="Manufacturer_has_many_carModel" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#3fab06"
+	 src-table="public.&quot;Manufacturer&quot;"
+	 dst-table="public.&quot;carModel&quot;"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="17.1994" y="-40.318"/>
+	</label>
+</relationship>
+
+<table name="customer" layers="0" collapse-mode="2" max-obj-count="9" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="440" y="760"/>
+	<column name="customerID" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="workHourContact">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="customer_pk" type="pk-constr" table="public.customer">
+		<columns names="customerID" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="founder" layers="0" collapse-mode="2" max-obj-count="9" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="-80" y="400"/>
+	<column name="yearFounded">
+		<type name="varchar" length="0"/>
+	</column>
+</table>
+
+<relationship name="founder_isa_person" type="relgen" layers="0"
+	 pk-pattern="{dt}_pk"
+	 custom-color="#95d7cd"
+	 src-table="public.founder"
+	 dst-table="public.person"/>
+
+<table name="address" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1300" y="860"/>
+	<column name="addressID" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="street">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="city">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="postalCode">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="country">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="address_pk" type="pk-constr" table="public.address">
+		<columns names="addressID" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="customer_isa_person" type="relgen" layers="0"
+	 pk-pattern="{dt}_pk"
+	 custom-color="#cafbd3"
+	 src-table="public.customer"
+	 dst-table="public.person"/>
+
+<table name="person_address" layers="0" collapse-mode="2" max-obj-count="2" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="620" y="1020"/>
+</table>
+
+<relationship name="person_has_many_person_address" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#c220c9"
+	 src-table="public.person"
+	 dst-table="public.person_address"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="address_has_many_person_address" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#bc16c7"
+	 src-table="public.address"
+	 dst-table="public.person_address"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="Manufacturer_has_many_founder" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#738ae8"
+	 src-table="public.&quot;Manufacturer&quot;"
+	 dst-table="public.founder"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="23.5526" y="-23.953"/>
+	</label>
+</relationship>
+
+<table name="CEO" layers="0" collapse-mode="2" max-obj-count="9" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="380" y="420"/>
+	<column name="ceoYearSince">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="employeeID" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="CEO_pk" type="pk-constr" table="public.&quot;CEO&quot;">
+		<columns names="employeeID" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="CEO_isa_person" type="relgen" layers="0"
+	 pk-pattern="{dt}_pk"
+	 custom-color="#14164b"
+	 src-table="public.&quot;CEO&quot;"
+	 dst-table="public.person"/>
+
+<relationship name="vehicleCategory_toMany_carModel" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#dfc644"
+	 src-table="public.&quot;vehicleCategory&quot;"
+	 dst-table="public.&quot;carModel&quot;"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="6.95411" y="-13.8638"/>
+	</label>
+</relationship>
+
+<table name="purchase" layers="0" collapse-mode="2" max-obj-count="7" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="720" y="440"/>
+	<column name="VIN">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="priceSold">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="sellerID">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="purchaseID" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="purchase_pk" type="pk-constr" table="public.purchase">
+		<columns names="purchaseID" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="VIN" type="uq-constr" table="public.purchase">
+		<columns names="VIN" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="customerID_customer" index="5"/>
+		<object name="modelName_carModel" index="4"/>
+	</customidxs>
+	<customidxs object-type="constraint">
+		<object name="carModel_fk" index="1"/>
+		<object name="customer_fk" index="3"/>
+		<object name="purchase_uq" index="2"/>
+	</customidxs></table>
+
+<relationship name="purchase_has_one_carModel" type="rel11" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#c6cdb6"
+	 src-table="public.&quot;carModel&quot;"
+	 dst-table="public.purchase"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="customer_has_many_purchase" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#c4c36b"
+	 src-table="public.customer"
+	 dst-table="public.purchase"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="109.702" y="-4.85299"/>
+	</label>
+</relationship>
+
+<relationship name="Manufacturer_has_one_CEO" type="rel11" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#ebdf71"
+	 src-table="public.&quot;CEO&quot;"
+	 dst-table="public.&quot;Manufacturer&quot;"
+	 src-required="false" dst-required="false"/>
+
+</dbmodel>
