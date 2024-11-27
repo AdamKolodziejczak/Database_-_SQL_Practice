@@ -1,2 +1,2 @@
 # SQL_Practice
-Databases and SQL Pratice
+Databases (PgModeler) and SQL Practice
